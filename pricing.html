@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing - Lux Ops</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lux: { black: '#050505', dark: '#0a0e17', green: '#CCFF00', gray: '#1F2937', text: '#E5E7EB', dim: '#9CA3AF' }
+            },
+            fontFamily: {
+              sans: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+              oswald: ['"Oswald"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #050505; color: #ffffff; }
+      .group:hover .group-hover\:block { display: block; }
+      .group:hover .group-hover\:opacity-100 { opacity: 1; }
+      .group:hover .group-hover\:translate-y-0 { transform: translateY(0); }
+      .group:hover .group-hover\:pointer-events-auto { pointer-events: auto; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <div id="header-container"></div>
+    <main id="main-content" class="flex-grow">
+        <div class="bg-lux-black min-h-screen py-24">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white font-oswald uppercase mb-4">Industry Pricing</h1>
+                    <p class="text-lux-dim text-lg font-mono">Standard packages for commercial operations and fleets.</p>
+                </div>
+                
+                <div id="pricing-container"></div>
+                
+                <div class="max-w-5xl mx-auto mt-32 border-t border-white/10 pt-24 text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white font-oswald uppercase tracking-wide mb-8">
+                      Residential Pricing
+                    </h2>
+                    <div class="border border-white/10 bg-lux-dark p-8 rounded-lg hover:border-lux-green/30 transition-colors mx-auto max-w-4xl">
+                       <p class="text-xl md:text-2xl font-mono text-white leading-relaxed mb-8 max-w-3xl mx-auto">
+                          Investment Range: £35K–£150K initial setup, with ongoing monitoring from £500–£3,500/month
+                       </p>
+                       <a href="contact.html" class="inline-block bg-lux-green text-black px-8 py-3 font-bold tracking-widest uppercase font-oswald hover:bg-white transition-colors rounded-sm text-base">
+                          Get a Custom Quote
+                       </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="js/app.js"></script>
+    <script>
+        document.getElementById('pricing-container').innerHTML = renderPricingSection();
+    </script>
+</body>
+</html>

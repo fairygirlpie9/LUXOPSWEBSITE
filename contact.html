@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Lux Ops</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lux: { black: '#050505', dark: '#0a0e17', green: '#CCFF00', gray: '#1F2937', text: '#E5E7EB', dim: '#9CA3AF' }
+            },
+            fontFamily: {
+              sans: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+              oswald: ['"Oswald"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #050505; color: #ffffff; }
+      .group:hover .group-hover\:block { display: block; }
+      .group:hover .group-hover\:opacity-100 { opacity: 1; }
+      .group:hover .group-hover\:translate-y-0 { transform: translateY(0); }
+      .group:hover .group-hover\:pointer-events-auto { pointer-events: auto; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <div id="header-container"></div>
+    <main id="main-content" class="flex-grow">
+        <div class="bg-lux-black min-h-screen py-24">
+           <div class="max-w-7xl mx-auto px-4">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                 <div>
+                    <h1 class="text-6xl font-bold text-white mb-8 font-oswald uppercase leading-none">INITIATE <br/> CONTACT</h1>
+                    <p class="text-xl text-lux-dim mb-12 leading-relaxed font-sans">Ready to transform your operations data into a competitive advantage? Our engineering team reviews all inquiries.</p>
+                    <div class="space-y-8 mb-16">
+                       <div class="flex items-start">
+                          <div class="bg-lux-green/10 p-4 rounded border border-lux-green/20 mr-6">
+                             <i class="ph-bold ph-envelope text-2xl text-lux-green"></i>
+                          </div>
+                          <div>
+                             <h3 class="text-white font-bold mb-1 font-oswald uppercase text-xl">Email</h3>
+                             <p class="text-lux-dim font-mono">hello@lux-ops.com</p>
+                          </div>
+                       </div>
+                       <div class="flex items-start">
+                          <div class="bg-lux-green/10 p-4 rounded border border-lux-green/20 mr-6">
+                             <i class="ph-bold ph-map-pin text-2xl text-lux-green"></i>
+                          </div>
+                          <div>
+                             <h3 class="text-white font-bold mb-1 font-oswald uppercase text-xl">HQ</h3>
+                             <p class="text-lux-dim font-mono">London, United Kingdom</p>
+                             <p class="text-lux-dim text-sm mt-2">Global Remote Operations</p>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="p-8 border border-white/10 rounded-lg bg-white/5">
+                       <h4 class="text-lux-green font-bold font-oswald uppercase mb-4">Before you request:</h4>
+                       <ul class="space-y-2 text-lux-dim text-sm font-mono list-disc list-inside">
+                          <li>We do not offer free trials for custom builds.</li>
+                          <li>Minimum engagement starts at $25,000.</li>
+                          <li>Please have your data sources identified (API, CSV, SQL).</li>
+                       </ul>
+                    </div>
+                 </div>
+                 <div class="bg-lux-dark border border-white/10 p-8 md:p-10 rounded-xl shadow-2xl">
+                    <form name="contact" method="post" data-netlify="true" class="space-y-6">
+                       <input type="hidden" name="form-name" value="contact" />
+                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                             <label class="block text-lux-dim text-xs font-bold font-mono mb-2 uppercase tracking-wider">First Name *</label>
+                             <input type="text" name="firstName" required class="w-full bg-lux-black border border-white/10 p-4 text-white rounded focus:border-lux-green focus:outline-none transition-colors" placeholder="Jane" />
+                          </div>
+                          <div>
+                             <label class="block text-lux-dim text-xs font-bold font-mono mb-2 uppercase tracking-wider">Last Name *</label>
+                             <input type="text" name="lastName" required class="w-full bg-lux-black border border-white/10 p-4 text-white rounded focus:border-lux-green focus:outline-none transition-colors" placeholder="Doe" />
+                          </div>
+                       </div>
+                       <div>
+                          <label class="block text-lux-dim text-xs font-bold font-mono mb-2 uppercase tracking-wider">Work Email *</label>
+                          <input type="email" name="email" required class="w-full bg-lux-black border border-white/10 p-4 text-white rounded focus:border-lux-green focus:outline-none transition-colors" placeholder="jane@company.com" />
+                       </div>
+                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <label class="block text-lux-dim text-xs font-bold font-mono mb-2 uppercase tracking-wider">Industry Sector *</label>
+                            <select name="industry" required class="w-full bg-lux-black border border-white/10 p-4 text-white rounded focus:border-lux-green focus:outline-none transition-colors appearance-none">
+                               <option value="Motorsports">Motorsports</option>
+                               <option value="Drone / Aerial Systems">Drone / Aerial Systems</option>
+                               <option value="Fleet Logistics">Fleet Logistics</option>
+                               <option value="Residential">Residential</option>
+                               <option value="Other">Other</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label class="block text-lux-dim text-xs font-bold font-mono mb-2 uppercase tracking-wider">Estimated Budget *</label>
+                            <select name="budget" required class="w-full bg-lux-black border border-white/10 p-4 text-white rounded focus:border-lux-green focus:outline-none transition-colors appearance-none">
+                               <option value="">Select Range...</option>
+                               <option value="$25k - $50k">$25k - $50k</option>
+                               <option value="$50k - $100k">$50k - $100k</option>
+                               <option value="$100k+">$100k+</option>
+                            </select>
+                          </div>
+                       </div>
+                       <div>
+                          <label class="block text-lux-dim text-xs font-bold font-mono mb-2 uppercase tracking-wider">Project Requirements</label>
+                          <textarea name="message" required rows="5" class="w-full bg-lux-black border border-white/10 p-4 text-white rounded focus:border-lux-green focus:outline-none transition-colors" placeholder="Describe your challenge..."></textarea>
+                       </div>
+                       <button type="submit" class="w-full bg-lux-green text-black font-bold py-5 rounded hover:bg-white transition-colors font-oswald uppercase tracking-widest text-lg mt-4">Submit Inquiry</button>
+                    </form>
+                 </div>
+              </div>
+           </div>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="js/app.js"></script>
+</body>
+</html>

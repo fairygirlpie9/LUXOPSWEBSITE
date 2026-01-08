@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post - Lux Ops</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lux: { black: '#050505', dark: '#0a0e17', green: '#CCFF00', gray: '#1F2937', text: '#E5E7EB', dim: '#9CA3AF' }
+            },
+            fontFamily: {
+              sans: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+              oswald: ['"Oswald"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #050505; color: #ffffff; }
+      .group:hover .group-hover\:block { display: block; }
+      .group:hover .group-hover\:opacity-100 { opacity: 1; }
+      .group:hover .group-hover\:translate-y-0 { transform: translateY(0); }
+      .group:hover .group-hover\:pointer-events-auto { pointer-events: auto; }
+      /* Prose Overrides */
+      .prose h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; color: #CCFF00; margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.25rem; }
+      .prose p { margin-bottom: 1.5rem; color: #E5E7EB; line-height: 1.75; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <div id="header-container"></div>
+    <main id="main-content" class="flex-grow">
+        <div class="bg-lux-black min-h-screen py-24">
+            <div class="max-w-4xl mx-auto px-4" id="post-container">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="js/app.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const post = BLOG_POSTS.find(p => p.id === id);
+        const container = document.getElementById('post-container');
+
+        if (!post) {
+            container.innerHTML = '<div class="text-white p-20 text-center">Post not found. <a href="blog.html" class="text-lux-green underline">Back to Logs</a></div>';
+        } else {
+            container.innerHTML = `
+                <a href="blog.html" class="inline-flex items-center text-lux-dim hover:text-white mb-12 transition-colors text-lg font-mono">
+                    <i class="ph-bold ph-arrow-left mr-3 text-xl"></i> Back to Logs
+                </a>
+                <header class="mb-16 text-center flex flex-col items-center">
+                    <div class="text-lux-green font-mono text-base mb-6 border border-lux-green/30 inline-block px-4 py-2 rounded">LOG DATE: ${post.date}</div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white leading-none font-oswald uppercase mb-8">${post.title}</h1>
+                </header>
+                <div class="mb-16 rounded-lg overflow-hidden border border-white/10 shadow-2xl">
+                    <img src="${post.image}" alt="${post.title}" class="w-full object-cover" />
+                </div>
+                <div class="prose prose-invert prose-xl max-w-none font-sans text-gray-300">
+                    ${post.content}
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

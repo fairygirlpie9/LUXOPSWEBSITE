@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Lux Ops</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lux: { black: '#050505', dark: '#0a0e17', green: '#CCFF00', gray: '#1F2937', text: '#E5E7EB', dim: '#9CA3AF' }
+            },
+            fontFamily: {
+              sans: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+              oswald: ['"Oswald"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #050505; color: #ffffff; }
+      .group:hover .group-hover\:block { display: block; }
+      .group:hover .group-hover\:opacity-100 { opacity: 1; }
+      .group:hover .group-hover\:translate-y-0 { transform: translateY(0); }
+      .group:hover .group-hover\:pointer-events-auto { pointer-events: auto; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <div id="header-container"></div>
+    <main id="main-content" class="flex-grow">
+        <div class="bg-lux-black min-h-screen py-24">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-5xl font-bold text-white mb-12 font-oswald uppercase">ABOUT LUX OPS</h1>
+                <div class="max-w-none">
+                    <p class="text-2xl text-lux-green font-light mb-8 leading-relaxed font-sans">Founded in 2025, Lux Ops was born from a simple observation: decision-makers are drowning in data but starving for clarity.</p>
+                    <p class="text-lux-dim mb-6 text-lg font-sans leading-relaxed">Traditional dashboards like Grafana and Tableau show you the data. But they don't tell you what to do with it. We built Lux Ops to bridge that gap combining beautiful, movie-grade UI design with intelligent decision engines.</p>
+                    <h3 class="text-white font-bold text-2xl mt-12 mb-4 font-oswald uppercase">Our Mission</h3>
+                    <div class="border-l-4 border-lux-green pl-6 py-2 bg-white/5 rounded-r-lg mb-8">
+                        <p class="text-white text-xl italic font-sans">"Build dashboards that don't just show data they show decisions."</p>
+                    </div>
+                    <h3 class="text-white font-bold text-2xl mt-12 mb-4 font-oswald uppercase">We Believe</h3>
+                    <ul class="space-y-4 list-none pl-0">
+                         <li class="flex items-center text-lux-dim font-sans text-lg">
+                           <span class="w-2 h-2 bg-lux-green rounded-full mr-4"></span>
+                           Beautiful design isn't optional it's essential for fast decision-making.
+                         </li>
+                         <li class="flex items-center text-lux-dim font-sans text-lg">
+                           <span class="w-2 h-2 bg-lux-green rounded-full mr-4"></span>
+                           AI should recommend actions, not just analyze past data.
+                         </li>
+                         <li class="flex items-center text-lux-dim font-sans text-lg">
+                           <span class="w-2 h-2 bg-lux-green rounded-full mr-4"></span>
+                           Two weeks is enough time to transform operations.
+                         </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="js/app.js"></script>
+</body>
+</html>

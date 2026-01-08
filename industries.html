@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Industries - Lux Ops</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              lux: { black: '#050505', dark: '#0a0e17', green: '#CCFF00', gray: '#1F2937', text: '#E5E7EB', dim: '#9CA3AF' }
+            },
+            fontFamily: {
+              sans: ['"Space Grotesk"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+              oswald: ['"Oswald"', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #050505; color: #ffffff; }
+      .group:hover .group-hover\:block { display: block; }
+      .group:hover .group-hover\:opacity-100 { opacity: 1; }
+      .group:hover .group-hover\:translate-y-0 { transform: translateY(0); }
+      .group:hover .group-hover\:pointer-events-auto { pointer-events: auto; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <div id="header-container"></div>
+    <main id="main-content" class="flex-grow pt-8">
+        <!-- Tabs -->
+        <div class="max-w-7xl mx-auto px-4 mb-8">
+            <div id="tabs-container" class="flex flex-wrap border-b border-white/10"></div>
+        </div>
+
+        <!-- Demo Area -->
+        <div id="demo-area" class="w-full bg-lux-dark border-y border-white/10 relative group"></div>
+
+        <!-- Info -->
+        <div class="max-w-7xl mx-auto px-4 py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div id="info-text"></div>
+                <div id="info-visual" class="relative"></div>
+            </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="border-t border-white/10 py-24 bg-lux-black">
+           <div class="max-w-7xl mx-auto px-4">
+              <h2 class="text-5xl font-bold text-white font-oswald uppercase mb-16 text-center">
+                Deployment Packages
+              </h2>
+              <div id="pricing-container"></div>
+           </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="border-t border-white/10 bg-lux-dark py-24">
+           <div class="max-w-4xl mx-auto px-4 text-center">
+              <h2 class="text-4xl md:text-5xl font-bold text-white font-oswald uppercase mb-6" id="cta-title">
+                Ready to deploy?
+              </h2>
+              <p class="text-xl text-lux-dim mb-10 font-sans max-w-2xl mx-auto">
+                Stop guessing. Start knowing. Schedule a technical consultation to see how Lux Ops can transform your efficiency.
+              </p>
+              <a href="contact.html" class="inline-block bg-lux-green text-black px-10 py-5 font-bold tracking-widest uppercase font-oswald text-lg hover:bg-white transition-colors rounded-sm">
+                Schedule Strategy Call
+              </a>
+           </div>
+        </div>
+    </main>
+    <div id="footer-container"></div>
+    <script src="js/app.js"></script>
+    <script>
+        // Determine active industry from URL
+        const params = new URLSearchParams(window.location.search);
+        const sector = params.get('sector') || 'motorsports';
+        const activeIndustry = INDUSTRIES.find(i => i.id === sector) || INDUSTRIES[0];
+
+        // Render Tabs
+        const tabsContainer = document.getElementById('tabs-container');
+        tabsContainer.innerHTML = INDUSTRIES.map(ind => `
+            <a href="?sector=${ind.id}" 
+               class="mr-8 pb-4 text-sm font-bold tracking-widest uppercase transition-all relative font-oswald ${ind.id === activeIndustry.id ? 'text-lux-green' : 'text-lux-dim hover:text-white'}">
+                ${ind.name}
+                ${ind.id === activeIndustry.id ? '<span class="absolute bottom-0 left-0 w-full h-0.5 bg-lux-green shadow-[0_0_10px_rgba(204,255,0,0.5)]"></span>' : ''}
+            </a>
+        `).join('');
+
+        // Render Demo Area
+        const demoArea = document.getElementById('demo-area');
+        if(activeIndustry.id !== 'custom') {
+            demoArea.innerHTML = `
+                <div class="max-w-[1600px] mx-auto">
+                    <div class="relative w-full h-[80vh]">
+                        <div class="absolute top-4 right-4 z-20 pointer-events-none">
+                          <span class="bg-lux-black/80 backdrop-blur text-lux-green border border-lux-green/30 px-3 py-1 text-xs font-mono rounded flex items-center">
+                             <i class="ph-bold ph-monitor mr-2"></i> LIVE DEMO INTERFACE
+                          </span>
+                        </div>
+                        <iframe src="${activeIndustry.demoUrl}" class="w-full h-full border-0" allowFullScreen></iframe>
+                    </div>
+                </div>
+            `;
+        } else {
+             demoArea.innerHTML = `
+                <div class="max-w-[1600px] mx-auto">
+                    <div class="relative w-full h-[80vh]">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-lux-black relative overflow-hidden">
+                            <div class="absolute inset-0">
+                                <img src="${activeIndustry.imageUrl}" class="w-full h-full object-cover opacity-30 blur-[2px]" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-lux-black via-lux-black/70 to-transparent"></div>
+                            </div>
+                            <div class="relative z-10 flex flex-col items-center p-6 text-center">
+                                <i class="ph-bold ph-hexagon text-7xl text-lux-green mb-8 animate-pulse"></i>
+                                <h3 class="text-4xl font-oswald uppercase text-white mb-4">Architecture Mode</h3>
+                                <p class="text-lux-dim max-w-lg text-center mb-8 font-sans">Custom solutions require secure access authorization.</p>
+                                <a href="contact.html" class="bg-lux-green text-black px-8 py-3 font-bold uppercase tracking-wide hover:bg-white transition-colors font-oswald">Initiate Consult</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render Info
+        document.getElementById('info-text').innerHTML = `
+            <h4 class="text-lux-green font-mono text-sm mb-4 uppercase tracking-wider">// ${activeIndustry.tagline}</h4>
+            <h1 class="text-5xl font-bold text-white mb-6 font-oswald uppercase">${activeIndustry.name}</h1>
+            <p class="text-xl text-lux-dim mb-10 leading-relaxed border-l-2 border-white/10 pl-6 font-sans">${activeIndustry.description}</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                ${activeIndustry.features.map(feat => `
+                    <div class="flex items-center space-x-3 bg-white/5 p-4 rounded border border-white/5">
+                        <i class="ph-bold ph-check-circle text-xl text-lux-green flex-shrink-0"></i>
+                        <span class="text-white font-medium text-sm font-mono">${feat}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <a href="contact.html" class="inline-block bg-white text-black px-8 py-4 font-bold tracking-wide hover:bg-lux-green transition-colors font-oswald uppercase">DEPLOY FOR YOUR TEAM</a>
+        `;
+        
+        document.getElementById('info-visual').innerHTML = `
+            <div class="absolute inset-0 bg-gradient-to-tr from-lux-green/20 to-transparent rounded-lg transform translate-x-4 translate-y-4 border border-lux-green/30"></div>
+            <img src="${activeIndustry.imageUrl}" class="relative w-full rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 border border-white/10" />
+            <div class="absolute bottom-8 left-8 bg-lux-black/90 p-4 border border-white/10 backdrop-blur-sm">
+                <div class="text-xs text-lux-dim font-mono mb-1">LATENCY</div>
+                <div class="text-2xl text-lux-green font-mono font-bold">12ms</div>
+            </div>
+        `;
+
+        // Render CTA Title
+        document.getElementById('cta-title').textContent = `Ready to deploy ${activeIndustry.name} Intelligence?`;
+
+        // Render Pricing
+        document.getElementById('pricing-container').innerHTML = renderPricingSection();
+    </script>
+</body>
+</html>
